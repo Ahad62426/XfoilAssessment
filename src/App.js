@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+
+import LoginPage from './views/LoginPage';
+
+import 'antd/dist/antd.css'
+import InfoPage from './views/InfoPage';
 
 function App() {
+
+  const [info, setInfo] = useState(null)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{
+      width: '100%',
+      height: '100vh',
+      display: "flex",
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      background: 'rgba(0, 0, 0, 0.1)'
+    }}>
+      {!info
+        ? <LoginPage setInfo={setInfo} />
+        : <InfoPage info={info} />
+      }
     </div>
   );
 }
